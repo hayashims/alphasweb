@@ -105,6 +105,45 @@ public abstract class BaseDao<T> {
         return t;
     }
 
+    /**
+     * 更新系SQL
+     * @param sql
+     */
+    public void executeSQL(String sql) {
+
+    	Connection conn = null;
+        Statement stmt = null;
+
+        try {
+            //PostgreSQLへ接続
+            conn = dataSource.getConnection();
+            //自動コミットOFF
+            conn.setAutoCommit(false);
+            //INSERT文の準備
+            stmt = conn.createStatement();
+            //INSERT文の実行
+            stmt.executeUpdate(sql);
+            // コミット
+            conn.commit();
+        } catch (Exception e){
+            try {
+                // ロールバック
+                conn.rollback();
+            } catch (Exception ex){
+                ex.printStackTrace();
+            }
+            e.printStackTrace();
+        } finally {
+            try {
+                if(stmt != null) stmt.close();
+                if(conn != null) conn.close();
+            } catch (SQLException e){
+                e.printStackTrace();
+            }
+        }
+        return;
+
+    }
 
     abstract protected T setBean(ResultSet rset);
 

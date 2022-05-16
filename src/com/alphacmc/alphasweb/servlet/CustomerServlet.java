@@ -29,21 +29,25 @@ public class CustomerServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         // パラメータ取得
-        String customerId = request.getParameter("customerId");
+        final String customerId = request.getParameter("customerId");
+
+        final String forwardJSP;
 
         final CustomerBean customer;
         if (customerId == null) {
             // 新規
             customer = new CustomerBean();
+            forwardJSP = "customerNew.jsp";
         } else {
             String sql = "SELECT customer_id, customer_name FROM customer WHERE customer_id = " + customerId;
             customer = customerDao.getResult(sql);
+            forwardJSP = "customer.jsp";
         }
         // リクエストコンテキスト設定
         request.setAttribute("customer", customer);
 
         // 画面遷移
-        RequestDispatcher dispatch = request.getRequestDispatcher("/customer.jsp");
+        RequestDispatcher dispatch = request.getRequestDispatcher("/" + forwardJSP);
         dispatch.forward(request, response);
 
     }
