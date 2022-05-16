@@ -12,11 +12,11 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-    <title>注文データリスト</title>
+    <title>顧客データ</title>
   </head>
 
   <body>
-    <h2>顧客</h2>
+    <h2>顧客データ</h2>
 
     <form>
     <table>

@@ -2,7 +2,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page isELIgnored="false" %>
 <html>
-<body>
+  <head>
+    <title>商品テーブルリスト</title>
+  </head>
+  <body>
+
 <h2>商品テーブルリスト</h2>
 
 <table>
@@ -19,5 +23,6 @@
     </tr>
   </c:forEach>
 </table>
-</body>
+
+  </body>
 </html>
