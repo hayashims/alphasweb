@@ -34,7 +34,7 @@ public class CustomerServlet extends HttpServlet {
         final String forwardJSP;
 
         final CustomerBean customer;
-        if (customerId == null) {
+        if (customerId == null || "".equals(customerId)) {
             // 新規
             customer = new CustomerBean();
             forwardJSP = "customerNew.jsp";

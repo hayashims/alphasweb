@@ -51,9 +51,7 @@
 
 <script type="text/javascript">
 $('#add').on('click', function() {
-    alert("追加");
-    location.href="/alphasweb/customerSave"
-
+    location.href="/alphasweb/customer"
 });
 </script>
 
