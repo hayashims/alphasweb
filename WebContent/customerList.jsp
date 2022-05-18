@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="com.alphacmc.alphasweb.bean.CustomerBean"%>
-<%@ page import="java.util.List" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page isELIgnored="false" %>
+
 <html>
 
   <head>
@@ -12,26 +13,25 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-    <title>注文データリスト</title>
+    <title>顧客テーブルリスト</title>
   </head>
 
   <body>
     <h2>顧客テーブルリスト</h2>
-<%
-List<CustomerBean> customerList = (List<CustomerBean>)request.getAttribute("customerList");
-%>
 
     <table>
     <tr>
         <th>顧客ID</th>
         <th>顧客名</th>
+        <th><th>
     </tr>
-<% for (CustomerBean cust : customerList) { %>
+    <c:forEach items="${customerList}" var="cust">
     <tr>
-      <td><%= cust.getCustomerId() %></td>
-      <td><%= cust.getCustomerName() %></td>
+      <td>${cust.customerId}</td>
+      <td><c:out value="${cust.customerName}" /></td>
+      <td><a href="./customer?customerId=${cust.customerId}" class="btn btn-secondary btn-sm" role="button">更新</a></td>
     </tr>
-<% } %>
+    </c:forEach>
     </table>
     <br>
     <div class="row center-block text-center">

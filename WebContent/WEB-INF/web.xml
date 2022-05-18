@@ -19,24 +19,6 @@
         <url-pattern>/*</url-pattern>
   </filter-mapping>
 
-  <servlet>
-    <servlet-name>CustList</servlet-name>
-    <servlet-class>com.alphacmc.alphasweb.servlet.CustomerListServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>CustList</servlet-name>
-    <url-pattern>/customerList</url-pattern>
-  </servlet-mapping>
-
-  <servlet>
-    <servlet-name>ProdList</servlet-name>
-    <servlet-class>com.alphacmc.alphasweb.servlet.ProdListServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ProdList</servlet-name>
-    <url-pattern>/prodList</url-pattern>
-  </servlet-mapping>
-
   <resource-ref>
     <res-ref-name>jdbc/postgres</res-ref-name>
     <res-type>javax.sql.DataSource</res-type>

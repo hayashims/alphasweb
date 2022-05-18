@@ -13,6 +13,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,6 +26,7 @@ import com.alphacmc.alphasweb.bean.CustomerBean;
  * @author yohira
  *
  */
+@WebServlet("/customerList")
 public class CustomerListServlet extends HttpServlet {
 
     // JNDIプレフィックス
