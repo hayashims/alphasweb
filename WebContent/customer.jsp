@@ -16,19 +16,20 @@
 
   <body>
     <h2>顧客</h2>
-
+    <br>
+    <font color="red"><c:out value="${message}"/></font>
     <form action="customerSave" method="post">
     <table>
     <tr>
       <th>顧客ID</th>
       <td>
-        <input type="text" name="customerId" size="5" value="<c:out value='${customer.customerId}' />"  readonly="readonly" />
+        <input type="text" name="customerId" size="5" value="<c:out value='${customerForm.customerId}' />"  readonly="readonly" />
       </td>
     </tr>
     <tr>
       <th>顧客名</th>
       <td>
-        <input type="text" name="customerName" size="30" value="<c:out value='${customer.customerName}' />"  />
+        <input type="text" name="customerName" size="30" value="<c:out value='${customerForm.customerName}' />"  />
       </td>
     </tr>
     </table>

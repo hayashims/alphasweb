@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.alphacmc.alphasweb.bean.CustomerBean;
 import com.alphacmc.alphasweb.dao.CustomerDao;
+import com.alphacmc.alphasweb.form.CustomerForm;
 
 @WebServlet("/customer")
 public class CustomerServlet extends HttpServlet {
@@ -33,18 +34,20 @@ public class CustomerServlet extends HttpServlet {
 
         final String forwardJSP;
 
-        final CustomerBean customer;
+        // 顧客情報画面フォームBeanの準備
+        final CustomerForm customerForm = new CustomerForm();;
         if (customerId == null || "".equals(customerId)) {
             // 新規
-            customer = new CustomerBean();
             forwardJSP = "customerNew.jsp";
         } else {
             String sql = "SELECT customer_id, customer_name FROM customer WHERE customer_id = " + customerId;
-            customer = customerDao.getResult(sql);
+            CustomerBean customer = customerDao.getResult(sql);
+            customerForm.setCustomerId(String.valueOf(customer.getCustomerId()));
+            customerForm.setCustomerName(customer.getCustomerName());
             forwardJSP = "customer.jsp";
         }
         // リクエストコンテキスト設定
-        request.setAttribute("customer", customer);
+        request.setAttribute("customerForm", customerForm);
 
         // 画面遷移
         RequestDispatcher dispatch = request.getRequestDispatcher("/" + forwardJSP);
