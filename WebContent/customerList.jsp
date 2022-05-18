@@ -39,7 +39,7 @@
         <button type="button" id="add" class="btn btn-outline-primary btn-block">追加</button>
       </div>
       <div class="col-1">
-        <button type="button" id="return" class="btn btn-outline-secondary btn-block" onclick="history.back()">戻る</button>
+        <button type="button" id="return" class="btn btn-outline-secondary btn-block">戻る</button>
       </div>
     </div>
 
@@ -52,6 +52,9 @@
 <script type="text/javascript">
 $('#add').on('click', function() {
     location.href="/alphasweb/customer"
+});
+$('#return').on('click', function() {
+    location.href="/alphasweb/"
 });
 </script>
 

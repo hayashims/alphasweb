@@ -72,7 +72,7 @@ public class ProdListServlet extends HttpServlet {
             conn = dataSource.getConnection();
 
             //SELECT文の準備
-            String sql = "SELECT prod_id, prod_name, price FROM prod";
+            String sql = "SELECT prod_id, prod_name, price FROM prod ORDER BY prod_id";
             stmt = conn.createStatement();
 
             //SELECT文の実行

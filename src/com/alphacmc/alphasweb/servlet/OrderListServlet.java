@@ -77,7 +77,8 @@ public class OrderListServlet extends HttpServlet {
                        + "LEFT OUTER JOIN customer c "
                        + "ON o.customer_id = c.customer_id "
                        + "LEFT OUTER JOIN prod p "
-                       + "ON o.prod_id = p.prod_id";
+                       + "ON o.prod_id = p.prod_id "
+                       + "ORDER BY order_id";
 
             stmt = conn.createStatement();
 

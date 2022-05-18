@@ -2,6 +2,7 @@ package com.alphacmc.alphasweb.servlet;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -30,9 +31,22 @@ public class CustomerSaveServlet extends HttpServlet {
 
         // パラメータ取得 & Formセット
     	CustomerForm customerForm = new CustomerForm();
-    	customerForm.setCustomerId(Integer.parseInt(request.getParameter("customerId")));
+    	customerForm.setCustomerId(request.getParameter("customerId"));
     	customerForm.setCustomerName(request.getParameter("customerName"));
-
+    	// customerId の数字チェック
+    	try {
+    		Integer.parseInt(customerForm.getCustomerId());
+    	} catch (Exception ex) {
+    		// customerIdが数字ではない場合
+            // リクエストコンテキスト設定
+            request.setAttribute("message", "顧客IDは数値をセットしてください。");
+            request.setAttribute("customerForm", customerForm);
+            // 画面遷移
+            RequestDispatcher dispatch = request.getRequestDispatcher("/customerNew.jsp");
+            dispatch.forward(request, response);
+            return;
+    	}
+    	
     	System.out.println(customerForm.getCustomerId());
     	System.out.println(customerForm.getCustomerName());
 

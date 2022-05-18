@@ -4,16 +4,16 @@ public class CustomerForm {
 
 
 	// 顧客ID
-	private int customerId;
+	private String customerId;
 
 	// 顧客名
 	private String customerName;
 
-	public int getCustomerId() {
+	public String getCustomerId() {
 		return customerId;
 	}
 
-	public void setCustomerId(int customerId) {
+	public void setCustomerId(String customerId) {
 		this.customerId = customerId;
 	}
 

@@ -11,34 +11,35 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-    <title>注文データリスト</title>
+    <title>顧客データ入力</title>
   </head>
 
   <body>
-    <h2>顧客</h2>
-
+    <h2>顧客データ入力</h2>
+    <br>
+    <font color="red"><c:out value="${message}"/></font>
     <form action="customerSave" method="post">
     <table>
     <tr>
       <th>顧客ID</th>
       <td>
-        <input type="text" name="customerId" size="5" />
+        <input type="text" name="customerId" value="<c:out value='${customerForm.customerId}' />" size="5" />
       </td>
     </tr>
     <tr>
       <th>顧客名</th>
       <td>
-        <input type="text" name="customerName" size="30" />
+        <input type="text" name="customerName" value="<c:out value='${customerForm.customerName}' />" size="30" />
       </td>
     </tr>
     </table>
     <br>
     <div class="row center-block text-center">
       <div class="col-1">
-        <input type="submit" id="add" class="btn btn-outline-primary btn-block" value="更新">
+        <input type="submit" id="add" class="btn btn-outline-primary btn-block" value="追加">
       </div>
       <div class="col-1">
-        <button type="button" id="return" class="btn btn-outline-secondary btn-block" onclick="history.back()">戻る</button>
+        <a href="./customerList" class="btn btn-outline-secondary btn-block" role="button">戻る</a></td>       
       </div>
     </div>
     </form>

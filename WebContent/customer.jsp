@@ -38,7 +38,7 @@
         <input type="submit" id="update" class="btn btn-outline-primary btn-block" value="更新">
       </div>
       <div class="col-1">
-        <button type="button" id="return" class="btn btn-outline-secondary btn-block" onclick="history.back()">戻る</button>
+        <a href="./customerList" class="btn btn-outline-secondary btn-block" role="button">戻る</a></td>       
       </div>
     </div>
     </form>
