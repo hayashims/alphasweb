@@ -67,6 +67,11 @@ $('#return').on('click', function() {
 });
 
 $('#delete').on('click', function() {
+	let checked = document.querySelectorAll('input[type="checkbox"]:checked');
+	if(checked.length == 0) {
+		alert("何も選択されていません。");
+		return false;
+	} 
 	return confirm("削除しますか？")
 });
 </script>
