@@ -19,6 +19,7 @@
   <body>
     <h2>顧客テーブルリスト</h2>
 
+	<form action="customerListop" method="post">
     <table>
     <tr>
         <th>顧客ID</th>
@@ -27,21 +28,30 @@
     </tr>
     <c:forEach items="${customerList}" var="cust">
     <tr>
-      <td>${cust.customerId}</td>
+      <td>
+		<input type="checkbox" name="check" id="check" value="${cust.customerId}">
+        &nbsp;&nbsp; ${cust.customerId}
+      </td>     
       <td><c:out value="${cust.customerName}" /></td>
       <td><a href="./customer?customerId=${cust.customerId}" class="btn btn-secondary btn-sm" role="button">更新</a></td>
     </tr>
     </c:forEach>
     </table>
+    
     <br>
     <div class="row center-block text-center">
       <div class="col-1">
         <button type="button" id="add" class="btn btn-outline-primary btn-block">追加</button>
       </div>
       <div class="col-1">
+        <input type="submit" id="delete" class="btn btn-outline-primary btn-block" value="削除">
+      </div>
+      <div class="col-1">
         <button type="button" id="return" class="btn btn-outline-secondary btn-block">戻る</button>
       </div>
     </div>
+
+    </form>
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->

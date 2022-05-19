@@ -11,35 +11,41 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-    <title>顧客データ入力</title>
+    <title>商品データ入力</title>
   </head>
 
   <body>
-    <h2>顧客データ更新</h2>
+    <h2>商品データ追加</h2>
     <br>
     <font color="red"><c:out value="${message}"/></font>
-    <form action="customerSave" method="post">
+    <form action="prodSave" method="post">
     <table>
     <tr>
-      <th>顧客ID</th>
+      <th>商品ID</th>
       <td>
-        <input type="text" name="customerId" size="5" value="<c:out value='${customerForm.customerId}' />"  readonly="readonly" />
+        <input type="text" name="prodId" size="5" value="<c:out value='${prodForm.prodId}' />" />
       </td>
     </tr>
     <tr>
-      <th>顧客名</th>
+      <th>商品名</th>
       <td>
-        <input type="text" name="customerName" size="30" value="<c:out value='${customerForm.customerName}' />"  />
+        <input type="text" name="prodName" size="30" value="<c:out value='${prodForm.prodName}' />"  />
+      </td>
+    </tr>
+    <tr>
+      <th>価格</th>
+      <td align="right">
+        <input type="text" name="price" size="30" value="<c:out value='${prodForm.price}' />"  />
       </td>
     </tr>
     </table>
     <br>
     <div class="row center-block text-center">
       <div class="col-1">
-        <input type="submit" id="update" class="btn btn-outline-primary btn-block" value="更新">
+        <input type="submit" id="update" class="btn btn-outline-primary btn-block" value="追加">
       </div>
       <div class="col-1">
-        <a href="./customerList" class="btn btn-outline-secondary btn-block" role="button">戻る</a></td>       
+        <a href="./prodList" class="btn btn-outline-secondary btn-block" role="button">戻る</a></td>       
       </div>
     </div>
     </form>
@@ -53,7 +59,7 @@
 
 <script type="text/javascript">
 $('#update').on('click', function() {
-	return confirm("更新しますか？")
+	return confirm("追加しますか？")
 });
 </script>
 
