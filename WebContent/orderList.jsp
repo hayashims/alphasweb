@@ -75,6 +75,9 @@ $('#add').on('click', function() {
 $('#return').on('click', function() {
     location.href="/alphasweb/"
 });
+$('#delete').on('click', function() {
+	return confirm("削除しますか？")
+});
 </script>
 
   </body>
