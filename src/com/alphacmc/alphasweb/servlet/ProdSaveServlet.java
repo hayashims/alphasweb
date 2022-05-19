@@ -29,6 +29,9 @@ public class ProdSaveServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         // パラメータ取得 & Formセット
+    	// 処理タイプ
+    	String procType = request.getParameter("procType");  
+    	
     	ProdForm prodForm = new ProdForm();
     	prodForm.setProdId(request.getParameter("prodId"));
     	prodForm.setProdName(request.getParameter("prodName"));
@@ -51,7 +54,11 @@ public class ProdSaveServlet extends HttpServlet {
     		request.setAttribute("message", message);
             request.setAttribute("prodForm", prodForm);
             // 画面遷移
-            request.getRequestDispatcher("/prodNew.jsp").forward(request, response);
+            if (procType == null || "".equals(procType)) {
+                request.getRequestDispatcher("/prod.jsp").forward(request, response);
+            } else {
+                request.getRequestDispatcher("/prodNew.jsp").forward(request, response);
+            }
             return;
     	}
     	

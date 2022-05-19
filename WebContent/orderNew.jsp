@@ -20,6 +20,7 @@
     <br>
     <font color="red"><c:out value="${message}"/></font>
     <form action="orderSave" method="post">
+    <input type="hidden" name="procType" value="add" >
     <table>
     <tr>
       <th>注文ID</th>
@@ -38,7 +39,7 @@
       <td>
 		<select name="customerId" size="1">
 		<c:forEach items="${customerList}" var="customer">
-			<option value="${customer.customerId}" <c:if test="${customer.customerId == orderForm.orderId}">selected</c:if>>${customer.customerName}</option>
+			<option value="${customer.customerId}" <c:if test="${customer.customerId == orderForm.customerId}">selected</c:if>>${customer.customerName}</option>
 		</c:forEach>
 		</select>
       </td>
@@ -52,7 +53,8 @@
 		</c:forEach>
 		</select>
       </td>
-
+    </tr>
+    <tr>
       <th>数量</th>
       <td>
         <input type="text" name="qty" value="<c:out value='${orderForm.qty}' />" size="10" />

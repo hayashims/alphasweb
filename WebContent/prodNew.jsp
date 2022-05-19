@@ -19,6 +19,7 @@
     <br>
     <font color="red"><c:out value="${message}"/></font>
     <form action="prodSave" method="post">
+    <input type="hidden" name="procType" value="add" >
     <table>
     <tr>
       <th>商品ID</th>
