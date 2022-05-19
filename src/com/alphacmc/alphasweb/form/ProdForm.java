@@ -2,7 +2,7 @@ package com.alphacmc.alphasweb.form;
 
 public class ProdForm {
 
-	// 商品D
+	// 商品ID
 	private String prodId;
 
 	// 商品名
