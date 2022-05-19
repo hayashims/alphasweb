@@ -2,7 +2,6 @@ package com.alphacmc.alphasweb.servlet;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,23 +34,27 @@ public class OrderSaveServlet extends HttpServlet {
     	orderForm.setCustomerId(request.getParameter("customerId"));
     	orderForm.setProdId(request.getParameter("prodId"));
     	orderForm.setQty(request.getParameter("qty"));
-    	
-    	// qty の数字チェック
-    	if (!isNumeric(orderForm.getQty())) {
-    		// qty が数字ではない場合
-            // リクエストコンテキスト設定
-            request.setAttribute("message", "数量は数値をセットしてください。");
-            request.setAttribute("orderForm", orderForm);
-            // 画面遷移
-            RequestDispatcher dispatch = request.getRequestDispatcher("/customerNew.jsp");
-            dispatch.forward(request, response);
-            return;
-    	}
-    	
+
     	System.out.println(orderForm.getOrderId());
     	System.out.println(orderForm.getCustomerId());
     	System.out.println(orderForm.getProdId());
 
+    	// orderId の数字チェック
+    	String message = "";
+    	if (!isNumeric(orderForm.getOrderId())) {
+    		message += "注文IDは数値をセットしてください。 ";
+    	}
+    	// qty の数字チェック
+    	if (!isNumeric(orderForm.getQty())) {
+    		message += "数量は数値をセットしてください。";
+    	}
+
+    	if (!"".equals(message)) {
+            request.setAttribute("orderForm", orderForm);
+            request.getRequestDispatcher("/orderNew.jsp").forward(request, response);
+            return;
+    	}
+    	
     	// 読み込む
         final String qureySQL = "SELECT order_id, order_date, customer_id, prod_id, qty FROM orders WHERE order_id = " + orderForm.getOrderId();
     	OrderBaseBean customer = orderDao.getResult(qureySQL);
@@ -83,13 +86,10 @@ public class OrderSaveServlet extends HttpServlet {
      * @return
      */
     private boolean isNumeric(String param) {
-    	try {
-    		Integer.parseInt(param);
-    	} catch (Exception ex) {
-    		// ProdIdが数字ではない場合
-    		return false;
+    	if (param.matches("[0-9]+")) {
+    		return true; 
     	}
-    	return true;
+    	return false;
     }   
     
 }

@@ -2,7 +2,6 @@ package com.alphacmc.alphasweb.servlet;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -43,18 +42,19 @@ public class ProdSaveServlet extends HttpServlet {
     	if (!isNumeric(prodForm.getPrice())) {
     		message += "価格は数値をセットしてください。";
     	}
+    	
+    	System.out.println(prodForm.getProdId());
+    	System.out.println(prodForm.getProdName());
+ 
+    	// エラー発生時
     	if (!"".equals(message)) {
     		request.setAttribute("message", message);
             request.setAttribute("prodForm", prodForm);
             // 画面遷移
-            RequestDispatcher dispatch = request.getRequestDispatcher("/prodNew.jsp");
-            dispatch.forward(request, response);
+            request.getRequestDispatcher("/prodNew.jsp").forward(request, response);
             return;
     	}
     	
-    	System.out.println(prodForm.getProdId());
-    	System.out.println(prodForm.getProdName());
-
     	// 読み込む
         final String qureySQL = "SELECT prod_id, prod_name, price FROM prod WHERE prod_id = " + prodForm.getProdId();
     	ProdBean prod = prodDao.getResult(qureySQL);
@@ -85,13 +85,10 @@ public class ProdSaveServlet extends HttpServlet {
      * @return
      */
     private boolean isNumeric(String param) {
-    	try {
-    		Integer.parseInt(param);
-    	} catch (Exception ex) {
-    		// ProdIdが数字ではない場合
-    		return false;
+    	if (param.matches("[0-9]+")) {
+    		return true; 
     	}
-    	return true;
+    	return false;
     }
     
 }

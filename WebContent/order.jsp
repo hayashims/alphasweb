@@ -24,7 +24,7 @@
     <tr>
       <th>注文ID</th>
       <td>
-        <input type="text" name="orderId" value="<c:out value='${orderForm.orderId}' />" size="5" />
+        <input type="text" name="orderId" value="<c:out value='${orderForm.orderId}' />" size="5" readonly="readonly" />
       </td>
     </tr>
     <tr>
