@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.alphacmc.alphasweb.bean.CustomerBean;
-import com.alphacmc.alphasweb.bean.OrderBean;
+import com.alphacmc.alphasweb.bean.OrderBaseBean;
 import com.alphacmc.alphasweb.bean.ProdBean;
 import com.alphacmc.alphasweb.dao.CustomerDao;
 import com.alphacmc.alphasweb.dao.OrderBaseDao;
@@ -55,7 +55,7 @@ public class OrderServlet extends HttpServlet {
         } else {
             String sql = "SELECT order_id, order_date, customer_id, prod_id, qty FROM orders WHERE order_id = " + orderId;
             
-            OrderBean order = orderDao.getResult(sql);
+            OrderBaseBean order = orderDao.getResult(sql);
             orderForm.setOrderId(String.valueOf(order.getOrderId()));
             orderForm.setOrderDate(order.getOrderDate());
             orderForm.setCustomerId(String.valueOf(order.getCustomerId()));

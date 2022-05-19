@@ -3,13 +3,14 @@ package com.alphacmc.alphasweb.dao;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.alphacmc.alphasweb.bean.OrderBaseBean;
 import com.alphacmc.alphasweb.bean.OrderBean;
 
-public class OrderBaseDao extends BaseDao<OrderBean> {
+public class OrderBaseDao extends BaseDao<OrderBaseBean> {
 
     @Override
-    protected OrderBean setBean(ResultSet rset) {
-    	OrderBean orderBean = new OrderBean();
+    protected OrderBaseBean setBean(ResultSet rset) {
+    	OrderBaseBean orderBean = new OrderBean();
         try {
         	orderBean.setOrderId(rset.getInt("order_id"));
         	orderBean.setOrderDate(rset.getTimestamp("order_date"));

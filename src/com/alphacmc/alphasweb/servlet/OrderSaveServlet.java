@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.alphacmc.alphasweb.bean.OrderBean;
+import com.alphacmc.alphasweb.bean.OrderBaseBean;
 import com.alphacmc.alphasweb.dao.OrderBaseDao;
 import com.alphacmc.alphasweb.form.OrderForm;
 
@@ -54,7 +54,7 @@ public class OrderSaveServlet extends HttpServlet {
 
     	// 読み込む
         final String qureySQL = "SELECT order_id, order_date, customer_id, prod_id, qty FROM orders WHERE order_id = " + orderForm.getOrderId();
-    	OrderBean customer = orderDao.getResult(qureySQL);
+    	OrderBaseBean customer = orderDao.getResult(qureySQL);
 
     	final String updateSQL;
     	if (customer == null) {
