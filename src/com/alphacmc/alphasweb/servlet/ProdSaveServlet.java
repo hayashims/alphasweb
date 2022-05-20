@@ -40,7 +40,7 @@ public class ProdSaveServlet extends HttpServlet {
     	// ProdId の数字チェック
     	String message = "";
     	if (!isNumeric(prodForm.getProdId())) {
-    		message += "顧客IDは数値をセットしてください。 ";
+    		message += "商品IDは数値をセットしてください。 ";
     	}
     	if (!isNumeric(prodForm.getPrice())) {
     		message += "価格は数値をセットしてください。";

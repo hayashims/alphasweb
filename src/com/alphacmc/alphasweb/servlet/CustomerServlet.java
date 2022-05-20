@@ -36,6 +36,7 @@ public class CustomerServlet extends HttpServlet {
 
         // 顧客情報画面フォームBeanの準備
         final CustomerForm customerForm = new CustomerForm();
+        // 追加ボタンが押されたか？
         if (customerId == null || "".equals(customerId)) {
             // 新規
             forwardJSP = "customerNew.jsp";

@@ -18,7 +18,7 @@
 
   <body>
     <h2>顧客テーブルリスト</h2>
-
+    <p align="right">${userBean.userId}：${userBean.userName}</p>
 	<form action="customerListop" method="post">
     <table>
     <tr>
